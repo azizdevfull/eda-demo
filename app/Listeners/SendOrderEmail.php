@@ -3,14 +3,17 @@
 namespace App\Listeners;
 
 use App\Events\OrderCreated;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Log;
 
-class SendOrderEmail
+class SendOrderEmail implements ShouldQueue
 {
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
     public function handle(OrderCreated $event): void
     {
-        Log::info('Email yuborildi: '.$event->order->id);
+        Log::info('Email yuborildi: ' . $event->order->id);
     }
 }
